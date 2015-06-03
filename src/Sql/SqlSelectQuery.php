@@ -13,16 +13,30 @@ class SqlSelectQuery extends AbstractSelectQuery implements SqlQuery
 
     public function makeSelect()
     {
-        return "select " . $this->fields();
+        if (!$this->fields()->count()) {
+            return "select *";
+        }
+
+        return "select " . $this->fields()->map(function ($field) {
+            return $field;
+        });
     }
 
     public function makeFrom()
     {
-        return "from" . $this->from();
+        if (!$this->from()->count()) {
+            return "";
+        }
+
+        return "from " . implode(', ', $this->from()->each('toSql')->values());
     }
 
     public function makeWhere()
     {
-        return "from" . $this->where();
+        if (!$this->where()->count()) {
+            return "";
+        }
+
+        return "where " . implode(' && ', $this->where()->each('toSql')->values());
     }
 }

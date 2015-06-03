@@ -2,15 +2,49 @@
 
 namespace Chemisus\Database;
 
+use Chemisus\Container\Container;
+
 interface QueryFactory
 {
-    public function select($fields, $from, $where, $group, $having, $order, $limit);
+    /**
+     * @param Container $fields
+     * @param Container $from
+     * @param Container $where
+     * @param Container $group
+     * @param Container $having
+     * @param Container $order
+     * @param int $limit
+     * @return mixed
+     */
+    public function select(Container $fields, Container $from, Container $where, Container $group, Container $having, Container $order, $limit);
 
-    public function insert($table, $fields, $values);
+    /**
+     * @param string $table
+     * @param Container $fields
+     * @param Container $values
+     * @return mixed
+     */
+    public function insert($table, Container $fields, Container $values);
 
-    public function update($table, $fields, $values, $where, $order, $limit);
+    /**
+     * @param string $table
+     * @param Container $fields
+     * @param Container $values
+     * @param Container $where
+     * @param Container $order
+     * @param int $limit
+     * @return mixed
+     */
+    public function update($table, Container $fields, Container $values, Container $where, Container $order, $limit);
 
-    public function delete($table, $where, $order, $limit);
+    /**
+     * @param string $table
+     * @param Container $where
+     * @param Container $order
+     * @param int $limit
+     * @return mixed
+     */
+    public function delete($table, Container $where, Container $order, $limit);
 
     public function createDatabase();
 

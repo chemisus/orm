@@ -2,27 +2,56 @@
 
 namespace Chemisus\Database;
 
+use Chemisus\Container\Container;
+
 class AbstractSelectQuery
 {
+    /**
+     * @var Container
+     */
     private $fields;
+
+    /**
+     * @var Container
+     */
     private $from;
+
+    /**
+     * @var Container
+     */
     private $where;
+
+    /**
+     * @var Container
+     */
     private $group;
+
+    /**
+     * @var Container
+     */
     private $having;
+
+    /**
+     * @var Container
+     */
     private $order;
+
+    /**
+     * @var int
+     */
     private $limit;
 
     /**
      * AbstractSelectQuery constructor.
-     * @param $fields
-     * @param $from
-     * @param $where
-     * @param $group
-     * @param $having
-     * @param $order
-     * @param $limit
+     * @param Container $fields
+     * @param Container $from
+     * @param Container $where
+     * @param Container $group
+     * @param Container $having
+     * @param Container $order
+     * @param int $limit
      */
-    public function __construct($fields, $from, $where, $group, $having, $order, $limit)
+    public function __construct(Container $fields, Container $from, Container $where, Container $group, Container $having, Container $order, $limit)
     {
         $this->fields = $fields;
         $this->from = $from;
@@ -34,7 +63,7 @@ class AbstractSelectQuery
     }
 
     /**
-     * @return mixed
+     * @return Container
      */
     public function fields()
     {
@@ -42,7 +71,7 @@ class AbstractSelectQuery
     }
 
     /**
-     * @return mixed
+     * @return Container
      */
     public function from()
     {
@@ -50,7 +79,7 @@ class AbstractSelectQuery
     }
 
     /**
-     * @return mixed
+     * @return Container
      */
     public function where()
     {
@@ -58,7 +87,7 @@ class AbstractSelectQuery
     }
 
     /**
-     * @return mixed
+     * @return Container
      */
     public function group()
     {
@@ -66,7 +95,7 @@ class AbstractSelectQuery
     }
 
     /**
-     * @return mixed
+     * @return Container
      */
     public function having()
     {
@@ -74,7 +103,7 @@ class AbstractSelectQuery
     }
 
     /**
-     * @return mixed
+     * @return Container
      */
     public function order()
     {
@@ -82,7 +111,7 @@ class AbstractSelectQuery
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function limit()
     {

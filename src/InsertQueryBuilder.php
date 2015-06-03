@@ -2,11 +2,50 @@
 
 namespace Chemisus\Database;
 
+use Chemisus\Container\ArrayContainer;
+use Chemisus\Container\Container;
+
 class InsertQueryBuilder extends AbstractQueryBuilder
 {
+    /**
+     * @var string
+     */
+    private $table;
+
+    /**
+     * @var Container
+     */
     private $fields;
-    private $from;
-    private $where;
+
+    /**
+     * @var Container
+     */
+    private $values;
+
+    /**
+     * InsertQueryBuilder constructor.
+     * @param QueryFactory $queryFactory
+     * @param string $table
+     * @param Container $fields
+     * @param Container $where
+     */
+    public function __construct(QueryFactory $queryFactory, $table = null, Container $fields = null, Container $where = null)
+    {
+        parent::__construct($queryFactory);
+        $this->table = $table;
+        $this->fields = $fields ?: new ArrayContainer();
+        $this->values = $where ?: new ArrayContainer();
+    }
+
+    /**
+     * @param mixed $table
+     * @return SelectQueryBuilder
+     */
+    public function table($table)
+    {
+        $this->table = $table;
+        return $this;
+    }
 
     /**
      * @param mixed $fields
@@ -19,22 +58,12 @@ class InsertQueryBuilder extends AbstractQueryBuilder
     }
 
     /**
-     * @param mixed $from
+     * @param mixed $values
      * @return SelectQueryBuilder
      */
-    public function from($from)
+    public function values($values)
     {
-        $this->from = $from;
-        return $this;
-    }
-
-    /**
-     * @param mixed $where
-     * @return SelectQueryBuilder
-     */
-    public function where($where)
-    {
-        $this->where = $where;
+        $this->values = $values;
         return $this;
     }
 
@@ -43,6 +72,6 @@ class InsertQueryBuilder extends AbstractQueryBuilder
      */
     public function build()
     {
-        return $this->queryFactory()->insert($this->fields, $this->from, $this->where);
+        return $this->queryFactory()->insert($this->table, $this->fields, $this->values);
     }
 }
