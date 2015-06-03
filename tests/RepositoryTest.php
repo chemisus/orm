@@ -1,16 +1,22 @@
 <?php
 
-namespace Chemisus\Database\Sql;
+namespace Chemisus\Database;
 
+use Chemisus\Database\DeleteStatement;
+use Chemisus\Database\InsertStatement;
 use Chemisus\Database\Jql\JqlQueryFactory;
 use Chemisus\Database\Jql\JqlRepository;
 use Chemisus\Database\Repository;
+use Chemisus\Database\SelectStatement;
+use Chemisus\Database\Sql\SqlQueryFactory;
+use Chemisus\Database\Sql\SqlRepository;
 use Chemisus\Database\Statement;
 use Chemisus\Database\StatementBuilder;
+use Chemisus\Database\UpdateStatement;
 use PDO;
 use PHPUnit_Framework_TestCase;
 
-class SqlRepositoryTest extends PHPUnit_Framework_TestCase
+class RepositoryTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @return Repository

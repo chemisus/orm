@@ -1,10 +1,6 @@
 <?php
 
-namespace Chemisus\Database\Sql;
-
-use Chemisus\Database\StatementBuilder;
-use Chemisus\Database\DeleteQueryBuilder;
-use Chemisus\Database\Statement;
+namespace Chemisus\Database;
 
 class DeleteStatement implements Statement
 {
