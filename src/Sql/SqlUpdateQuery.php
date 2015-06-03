@@ -2,7 +2,7 @@
 
 namespace Chemisus\Database\Sql;
 
-use Chemisus\Database\AbstractUpdateQuery;
+use Chemisus\Database\Query\AbstractUpdateQuery;
 
 class SqlUpdateQuery extends AbstractUpdateQuery implements SqlQuery
 {

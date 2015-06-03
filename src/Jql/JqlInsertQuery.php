@@ -2,7 +2,7 @@
 
 namespace Chemisus\Database\Jql;
 
-use Chemisus\Database\AbstractInsertQuery;
+use Chemisus\Database\Query\AbstractInsertQuery;
 
 class JqlInsertQuery extends AbstractInsertQuery
 {

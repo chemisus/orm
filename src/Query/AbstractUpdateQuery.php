@@ -1,65 +1,60 @@
 <?php
 
-namespace Chemisus\Database;
+namespace Chemisus\Database\Query;
 
 use Chemisus\Container\Container;
 
-class AbstractSelectQuery
+class AbstractUpdateQuery
 {
+    /**
+     * @var string
+     */
+    private $table;
     /**
      * @var Container
      */
     private $fields;
-
     /**
      * @var Container
      */
-    private $from;
-
+    private $values;
     /**
      * @var Container
      */
     private $where;
-
-    /**
-     * @var Container
-     */
-    private $group;
-
-    /**
-     * @var Container
-     */
-    private $having;
-
     /**
      * @var Container
      */
     private $order;
-
     /**
      * @var int
      */
     private $limit;
 
     /**
-     * AbstractSelectQuery constructor.
+     * @param string $table
      * @param Container $fields
-     * @param Container $from
+     * @param Container $values
      * @param Container $where
-     * @param Container $group
-     * @param Container $having
      * @param Container $order
      * @param int $limit
      */
-    public function __construct(Container $fields, Container $from, Container $where, Container $group, Container $having, Container $order, $limit)
+    public function __construct($table, Container $fields, Container $values, Container $where, Container $order, $limit)
     {
+        $this->table = $table;
         $this->fields = $fields;
-        $this->from = $from;
+        $this->values = $values;
         $this->where = $where;
-        $this->group = $group;
-        $this->having = $having;
         $this->order = $order;
         $this->limit = $limit;
+    }
+
+    /**
+     * @return string
+     */
+    public function table()
+    {
+        return $this->table;
     }
 
     /**
@@ -73,14 +68,6 @@ class AbstractSelectQuery
     /**
      * @return Container
      */
-    public function from()
-    {
-        return $this->from;
-    }
-
-    /**
-     * @return Container
-     */
     public function where()
     {
         return $this->where;
@@ -89,17 +76,9 @@ class AbstractSelectQuery
     /**
      * @return Container
      */
-    public function group()
+    public function values()
     {
-        return $this->group;
-    }
-
-    /**
-     * @return Container
-     */
-    public function having()
-    {
-        return $this->having;
+        return $this->values;
     }
 
     /**

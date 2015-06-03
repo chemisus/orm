@@ -1,6 +1,6 @@
 <?php
 
-namespace Chemisus\Database;
+namespace Chemisus\Database\Query;
 
 use Chemisus\Container\Container;
 

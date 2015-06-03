@@ -46,6 +46,12 @@ interface QueryFactory
      */
     public function delete($table, Container $where, Container $order, $limit);
 
+    /**
+     * @param string $name
+     * @return mixed
+     */
+    public function field($name);
+
     public function createDatabase();
 
     public function createTable();

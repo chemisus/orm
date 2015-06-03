@@ -43,5 +43,6 @@ class SqlRepositoryTest extends PHPUnit_Framework_TestCase
         $statement = new SelectStatement();
         $query = $statement->build($sql)->build();
         $this->assertInstanceOf('Chemisus\Database\Sql\SqlQuery', $query);
+        $this->assertEquals("", $query->toSql());
     }
 }

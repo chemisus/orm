@@ -2,7 +2,7 @@
 
 namespace Chemisus\Database\Sql;
 
-use Chemisus\Database\AbstractInsertQuery;
+use Chemisus\Database\Query\AbstractInsertQuery;
 
 class SqlInsertQuery extends AbstractInsertQuery implements SqlQuery
 {

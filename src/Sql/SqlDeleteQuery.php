@@ -2,7 +2,7 @@
 
 namespace Chemisus\Database\Sql;
 
-use Chemisus\Database\AbstractDeleteQuery;
+use Chemisus\Database\Query\AbstractDeleteQuery;
 
 class SqlDeleteQuery extends AbstractDeleteQuery implements SqlQuery
 {

@@ -71,8 +71,14 @@ class SelectQueryBuilder extends AbstractQueryBuilder
      */
     public function fields($fields)
     {
+        $fields = func_num_args() > 1 ? func_get_args() : $fields;
+        $fields = is_string($fields) ? [$fields] : $fields;
+        $fields = is_callable($fields) ? call_user_func($fields) : $fields;
         $fields = is_array($fields) ? new ArrayContainer($fields) : $fields;
-        $this->fields = $fields;
+        $this->fields = $fields->map(function ($field) {
+            $field = is_string($field) ? $this->queryFactory()->field($field) : $field;
+            return $field;
+        });
         return $this;
     }
 

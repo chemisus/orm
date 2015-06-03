@@ -2,7 +2,7 @@
 
 namespace Chemisus\Database\Sql;
 
-use Chemisus\Database\AbstractSelectQuery;
+use Chemisus\Database\Query\AbstractSelectQuery;
 
 class SqlSelectQuery extends AbstractSelectQuery implements SqlQuery
 {

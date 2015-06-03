@@ -2,7 +2,7 @@
 
 namespace Chemisus\Database\Jql;
 
-use Chemisus\Database\AbstractDeleteQuery;
+use Chemisus\Database\Query\AbstractDeleteQuery;
 
 class JqlDeleteQuery extends AbstractDeleteQuery
 {
