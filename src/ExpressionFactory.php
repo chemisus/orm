@@ -4,7 +4,7 @@ namespace Chemisus\Database;
 
 use Chemisus\Container\Container;
 
-interface QueryFactory
+interface ExpressionFactory
 {
     /**
      * @param Container $fields

@@ -1,9 +1,12 @@
 <?php
 
-namespace Chemisus\Database;
+namespace Chemisus\Database\QueryBuilders;
 
 use Chemisus\Container\ArrayContainer;
 use Chemisus\Container\Container;
+use Chemisus\Database\QueryBuilders\AbstractQueryBuilder;
+use Chemisus\Database\Query;
+use Chemisus\Database\ExpressionFactory;
 
 class SelectQueryBuilder extends AbstractQueryBuilder
 {
@@ -44,7 +47,7 @@ class SelectQueryBuilder extends AbstractQueryBuilder
 
     /**
      * SelectQueryBuilder constructor.
-     * @param QueryFactory $queryFactory
+     * @param ExpressionFactory $queryFactory
      * @param Container $fields
      * @param Container $froms
      * @param Container $wheres
@@ -53,7 +56,7 @@ class SelectQueryBuilder extends AbstractQueryBuilder
      * @param Container $orders
      * @param int $limit
      */
-    public function __construct(QueryFactory $queryFactory, Container $fields = null, Container $froms = null, Container $wheres = null, Container $groups = null, Container $havings = null, Container $orders = null, $limit = null)
+    public function __construct(ExpressionFactory $queryFactory, Container $fields = null, Container $froms = null, Container $wheres = null, Container $groups = null, Container $havings = null, Container $orders = null, $limit = null)
     {
         parent::__construct($queryFactory);
         $this->fields = $fields ?: new ArrayContainer();

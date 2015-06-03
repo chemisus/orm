@@ -4,11 +4,11 @@ namespace Chemisus\Database;
 
 use Chemisus\Database\DeleteStatement;
 use Chemisus\Database\InsertStatement;
-use Chemisus\Database\Jql\JqlQueryFactory;
+use Chemisus\Database\Jql\JqlExpressionFactory;
 use Chemisus\Database\Jql\JqlRepository;
 use Chemisus\Database\Repository;
 use Chemisus\Database\SelectStatement;
-use Chemisus\Database\Sql\SqlQueryFactory;
+use Chemisus\Database\Sql\SqlExpressionFactory;
 use Chemisus\Database\Sql\SqlRepository;
 use Chemisus\Database\Statement;
 use Chemisus\Database\StatementBuilder;
@@ -31,7 +31,7 @@ class SqlRepositoryTest extends PHPUnit_Framework_TestCase
      */
     public function testMakeSqlStatementBuilder()
     {
-        return new StatementBuilder(new SqlQueryFactory());
+        return new StatementBuilder(new SqlExpressionFactory());
     }
 
     /**

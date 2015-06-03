@@ -2,6 +2,8 @@
 
 namespace Chemisus\Database;
 
+use Chemisus\Database\QueryBuilders\InsertQueryBuilder;
+
 class InsertStatement implements Statement
 {
     /**

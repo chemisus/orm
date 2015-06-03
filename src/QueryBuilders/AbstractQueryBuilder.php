@@ -1,25 +1,28 @@
 <?php
 
-namespace Chemisus\Database;
+namespace Chemisus\Database\QueryBuilders;
+
+use Chemisus\Database\QueryBuilder;
+use Chemisus\Database\ExpressionFactory;
 
 abstract class AbstractQueryBuilder implements QueryBuilder
 {
     /**
-     * @var QueryFactory
+     * @var ExpressionFactory
      */
     private $queryFactory;
 
     /**
      * AbstractQueryBuilder constructor.
-     * @param QueryFactory $queryFactory
+     * @param ExpressionFactory $queryFactory
      */
-    public function __construct(QueryFactory $queryFactory)
+    public function __construct(ExpressionFactory $queryFactory)
     {
         $this->queryFactory = $queryFactory;
     }
 
     /**
-     * @return QueryFactory
+     * @return ExpressionFactory
      */
     public function queryFactory()
     {

@@ -3,9 +3,9 @@
 namespace Chemisus\Database\Jql;
 
 use Chemisus\Container\Container;
-use Chemisus\Database\QueryFactory;
+use Chemisus\Database\ExpressionFactory;
 
-class JqlQueryFactory implements QueryFactory
+class JqlExpressionFactory implements ExpressionFactory
 {
     public function select(Container $fields, Container $from, Container $where, Container $group, Container $having, Container $order, $limit)
     {

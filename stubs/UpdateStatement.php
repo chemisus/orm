@@ -2,6 +2,8 @@
 
 namespace Chemisus\Database;
 
+use Chemisus\Database\QueryBuilders\UpdateQueryBuilder;
+
 class UpdateStatement implements Statement
 {
     public function build(StatementBuilder $q)

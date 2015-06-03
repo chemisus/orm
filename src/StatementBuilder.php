@@ -2,10 +2,15 @@
 
 namespace Chemisus\Database;
 
+use Chemisus\Database\QueryBuilders\DeleteQueryBuilder;
+use Chemisus\Database\QueryBuilders\InsertQueryBuilder;
+use Chemisus\Database\QueryBuilders\SelectQueryBuilder;
+use Chemisus\Database\QueryBuilders\UpdateQueryBuilder;
+
 class StatementBuilder
 {
     /**
-     * @var QueryFactory
+     * @var ExpressionFactory
      */
     private $queryFactory;
 
@@ -13,7 +18,7 @@ class StatementBuilder
      * StatementBuilder constructor.
      * @param $queryFactory
      */
-    public function __construct(QueryFactory $queryFactory)
+    public function __construct(ExpressionFactory $queryFactory)
     {
         $this->queryFactory = $queryFactory;
     }

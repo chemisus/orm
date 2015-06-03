@@ -2,6 +2,8 @@
 
 namespace Chemisus\Database;
 
+use Chemisus\Database\QueryBuilders\DeleteQueryBuilder;
+
 class DeleteStatement implements Statement
 {
     public function build(StatementBuilder $q)

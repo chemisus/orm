@@ -26,7 +26,7 @@ class SqlRepository implements Repository
 
     public function execute(Statement $statement)
     {
-        $queryFactory = new SqlQueryFactory();
+        $queryFactory = new SqlExpressionFactory();
         $statementBuilder = new StatementBuilder($queryFactory);
         $query = $statement->build($statementBuilder);
         $sqlQuery = $query->build();

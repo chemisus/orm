@@ -3,9 +3,9 @@
 namespace Chemisus\Database\Sql;
 
 use Chemisus\Container\Container;
-use Chemisus\Database\QueryFactory;
+use Chemisus\Database\ExpressionFactory;
 
-class SqlQueryFactory implements QueryFactory
+class SqlExpressionFactory implements ExpressionFactory
 {
     /**
      * @param Container $fields

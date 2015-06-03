@@ -1,9 +1,12 @@
 <?php
 
-namespace Chemisus\Database;
+namespace Chemisus\Database\QueryBuilders;
 
 use Chemisus\Container\ArrayContainer;
 use Chemisus\Container\Container;
+use Chemisus\Database\QueryBuilders\AbstractQueryBuilder;
+use Chemisus\Database\Query;
+use Chemisus\Database\ExpressionFactory;
 
 class UpdateQueryBuilder extends AbstractQueryBuilder
 {
@@ -39,7 +42,7 @@ class UpdateQueryBuilder extends AbstractQueryBuilder
 
     /**
      * UpdateQueryBuilder constructor.
-     * @param QueryFactory $queryFactory
+     * @param ExpressionFactory $queryFactory
      * @param string $table
      * @param Container $fields
      * @param Container $values
@@ -47,7 +50,7 @@ class UpdateQueryBuilder extends AbstractQueryBuilder
      * @param Container $order
      * @param int $limit
      */
-    public function __construct(QueryFactory $queryFactory, $table = null, Container $fields = null, Container $values = null, Container $where = null, Container $order = null, $limit = null)
+    public function __construct(ExpressionFactory $queryFactory, $table = null, Container $fields = null, Container $values = null, Container $where = null, Container $order = null, $limit = null)
     {
         parent::__construct($queryFactory);
         $this->table = $table;

@@ -4,11 +4,11 @@ namespace Chemisus\Database;
 
 use Chemisus\Database\DeleteStatement;
 use Chemisus\Database\InsertStatement;
-use Chemisus\Database\Jql\JqlQueryFactory;
+use Chemisus\Database\Jql\JqlExpressionFactory;
 use Chemisus\Database\Jql\JqlRepository;
 use Chemisus\Database\Repository;
 use Chemisus\Database\SelectStatement;
-use Chemisus\Database\Sql\SqlQueryFactory;
+use Chemisus\Database\Sql\SqlExpressionFactory;
 use Chemisus\Database\Sql\SqlRepository;
 use Chemisus\Database\Statement;
 use Chemisus\Database\StatementBuilder;
@@ -39,7 +39,7 @@ class RepositoryTest extends PHPUnit_Framework_TestCase
      */
     public function testMakeSqlStatementBuilder()
     {
-        return new StatementBuilder(new SqlQueryFactory());
+        return new StatementBuilder(new SqlExpressionFactory());
     }
 
     /**
@@ -47,7 +47,7 @@ class RepositoryTest extends PHPUnit_Framework_TestCase
      */
     public function testMakeJqlStatementBuilder()
     {
-        return new StatementBuilder(new JqlQueryFactory());
+        return new StatementBuilder(new JqlExpressionFactory());
     }
 
     /**
@@ -120,8 +120,8 @@ class RepositoryTest extends PHPUnit_Framework_TestCase
      */
     public function testBuildSelectStatement(StatementBuilder $sql, StatementBuilder $jql, Statement $statement)
     {
-        $this->assertInstanceOf('Chemisus\Database\SelectQueryBuilder', $statement->build($sql));
-        $this->assertInstanceOf('Chemisus\Database\SelectQueryBuilder', $statement->build($jql));
+        $this->assertInstanceOf('Chemisus\Database\QueryBuilders\SelectQueryBuilder', $statement->build($sql));
+        $this->assertInstanceOf('Chemisus\Database\QueryBuilders\SelectQueryBuilder', $statement->build($jql));
     }
 
     /**
@@ -134,8 +134,8 @@ class RepositoryTest extends PHPUnit_Framework_TestCase
      */
     public function testBuildInsertStatement(StatementBuilder $sql, StatementBuilder $jql, Statement $statement)
     {
-        $this->assertInstanceOf('Chemisus\Database\InsertQueryBuilder', $statement->build($sql));
-        $this->assertInstanceOf('Chemisus\Database\InsertQueryBuilder', $statement->build($jql));
+        $this->assertInstanceOf('Chemisus\Database\QueryBuilders\InsertQueryBuilder', $statement->build($sql));
+        $this->assertInstanceOf('Chemisus\Database\QueryBuilders\InsertQueryBuilder', $statement->build($jql));
     }
 
     /**
@@ -148,8 +148,8 @@ class RepositoryTest extends PHPUnit_Framework_TestCase
      */
     public function testBuildUpdateStatement(StatementBuilder $sql, StatementBuilder $jql, Statement $statement)
     {
-        $this->assertInstanceOf('Chemisus\Database\UpdateQueryBuilder', $statement->build($sql));
-        $this->assertInstanceOf('Chemisus\Database\UpdateQueryBuilder', $statement->build($jql));
+        $this->assertInstanceOf('Chemisus\Database\QueryBuilders\UpdateQueryBuilder', $statement->build($sql));
+        $this->assertInstanceOf('Chemisus\Database\QueryBuilders\UpdateQueryBuilder', $statement->build($jql));
     }
 
     /**
@@ -162,8 +162,8 @@ class RepositoryTest extends PHPUnit_Framework_TestCase
      */
     public function testBuildDeleteStatement(StatementBuilder $sql, StatementBuilder $jql, Statement $statement)
     {
-        $this->assertInstanceOf('Chemisus\Database\DeleteQueryBuilder', $statement->build($sql));
-        $this->assertInstanceOf('Chemisus\Database\DeleteQueryBuilder', $statement->build($jql));
+        $this->assertInstanceOf('Chemisus\Database\QueryBuilders\DeleteQueryBuilder', $statement->build($sql));
+        $this->assertInstanceOf('Chemisus\Database\QueryBuilders\DeleteQueryBuilder', $statement->build($jql));
     }
 
     /**
