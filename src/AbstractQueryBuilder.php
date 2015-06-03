@@ -18,6 +18,9 @@ abstract class AbstractQueryBuilder implements QueryBuilder
         $this->queryFactory = $queryFactory;
     }
 
+    /**
+     * @return QueryFactory
+     */
     public function queryFactory()
     {
         return $this->queryFactory;

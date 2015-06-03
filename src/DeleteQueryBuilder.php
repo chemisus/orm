@@ -46,7 +46,7 @@ class DeleteQueryBuilder extends AbstractQueryBuilder
 
     /**
      * @param mixed $table
-     * @return SelectQueryBuilder
+     * @return $this
      */
     public function table($table)
     {
@@ -55,22 +55,22 @@ class DeleteQueryBuilder extends AbstractQueryBuilder
     }
 
     /**
-     * @param mixed $fields
-     * @return SelectQueryBuilder
+     * @param mixed $order
+     * @return $this
      */
-    public function fields($fields)
+    public function order($order)
     {
-        $this->order = $fields;
+        $this->order = $order ?: new ArrayContainer();
         return $this;
     }
 
     /**
      * @param mixed $where
-     * @return SelectQueryBuilder
+     * @return $this
      */
     public function where($where)
     {
-        $this->where = $where;
+        $this->where = $where ?: new ArrayContainer();
         return $this;
     }
 
