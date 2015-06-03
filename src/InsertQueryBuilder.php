@@ -27,19 +27,19 @@ class InsertQueryBuilder extends AbstractQueryBuilder
      * @param QueryFactory $queryFactory
      * @param string $table
      * @param Container $fields
-     * @param Container $where
+     * @param Container $wheres
      */
-    public function __construct(QueryFactory $queryFactory, $table = null, Container $fields = null, Container $where = null)
+    public function __construct(QueryFactory $queryFactory, $table = null, Container $fields = null, Container $wheres = null)
     {
         parent::__construct($queryFactory);
         $this->table = $table;
         $this->fields = $fields ?: new ArrayContainer();
-        $this->values = $where ?: new ArrayContainer();
+        $this->values = $wheres ?: new ArrayContainer();
     }
 
     /**
      * @param mixed $table
-     * @return SelectQueryBuilder
+     * @return $this
      */
     public function table($table)
     {
@@ -49,20 +49,22 @@ class InsertQueryBuilder extends AbstractQueryBuilder
 
     /**
      * @param mixed $fields
-     * @return SelectQueryBuilder
+     * @return $this
      */
     public function fields($fields)
     {
+        $fields = is_array($fields) ? new ArrayContainer($fields) : $fields;
         $this->fields = $fields;
         return $this;
     }
 
     /**
      * @param mixed $values
-     * @return SelectQueryBuilder
+     * @return $this
      */
     public function values($values)
     {
+        $values = is_array($values) ? new ArrayContainer($values) : $values;
         $this->values = $values;
         return $this;
     }

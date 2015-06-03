@@ -25,12 +25,12 @@ class UpdateQueryBuilder extends AbstractQueryBuilder
     /**
      * @var Container
      */
-    private $where;
+    private $wheres;
 
     /**
      * @var Container
      */
-    private $order;
+    private $orders;
 
     /**
      * @var int
@@ -53,38 +53,72 @@ class UpdateQueryBuilder extends AbstractQueryBuilder
         $this->table = $table;
         $this->fields = $fields ?: new ArrayContainer();
         $this->values = $values ?: new ArrayContainer();
-        $this->where = $where ?: new ArrayContainer();
-        $this->order = $order ?: new ArrayContainer();
+        $this->wheres = $where ?: new ArrayContainer();
+        $this->orders = $order ?: new ArrayContainer();
         $this->limit = $limit;
     }
 
     /**
+     * @param mixed $table
+     * @return $this
+     */
+    public function table($table)
+    {
+        $this->table = $table;
+        return $this;
+    }
+
+    /**
      * @param mixed $fields
-     * @return SelectQueryBuilder
+     * @return $this
      */
     public function fields($fields)
     {
+        $fields = is_array($fields) ? new ArrayContainer($fields) : $fields;
         $this->fields = $fields;
         return $this;
     }
 
     /**
-     * @param mixed $from
-     * @return SelectQueryBuilder
+     * @param mixed $values
+     * @return $this
      */
-    public function from($from)
+    public function values($values)
     {
-        $this->table = $from;
+        $values = is_array($values) ? new ArrayContainer($values) : $values;
+        $this->values = $values;
         return $this;
     }
 
     /**
-     * @param mixed $where
-     * @return SelectQueryBuilder
+     * @param mixed $wheres
+     * @return $this
      */
-    public function where($where)
+    public function wheres($wheres)
     {
-        $this->where = $where;
+        $wheres = is_array($wheres) ? new ArrayContainer($wheres) : $wheres;
+        $this->wheres = $wheres;
+        return $this;
+    }
+
+    /**
+     * @param mixed $orders
+     * @return $this
+     */
+    public function orders($orders)
+    {
+        $orders = is_array($orders) ? new ArrayContainer($orders) : $orders;
+        $this->orders = $orders;
+        return $this;
+    }
+
+    /**
+     * @param int $limit
+     * @return $this
+     */
+    public function limit($limit)
+    {
+        $this->limit = $limit;
         return $this;
     }
 
@@ -93,6 +127,6 @@ class UpdateQueryBuilder extends AbstractQueryBuilder
      */
     public function build()
     {
-        return $this->queryFactory()->update($this->table, $this->fields, $this->values, $this->where, $this->order, $this->limit);
+        return $this->queryFactory()->update($this->table, $this->fields, $this->values, $this->wheres, $this->orders, $this->limit);
     }
 }

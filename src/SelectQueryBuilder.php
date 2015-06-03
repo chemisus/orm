@@ -15,27 +15,27 @@ class SelectQueryBuilder extends AbstractQueryBuilder
     /**
      * @var Container
      */
-    private $from;
+    private $froms;
 
     /**
      * @var Container
      */
-    private $where;
+    private $wheres;
 
     /**
      * @var Container
      */
-    private $group;
+    private $groups;
 
     /**
      * @var Container
      */
-    private $having;
+    private $havings;
 
     /**
      * @var Container
      */
-    private $order;
+    private $orders;
 
     /**
      * @var int
@@ -46,29 +46,28 @@ class SelectQueryBuilder extends AbstractQueryBuilder
      * SelectQueryBuilder constructor.
      * @param QueryFactory $queryFactory
      * @param Container $fields
-     * @param Container $from
-     * @param Container $where
-     * @param Container $group
-     * @param Container $having
-     * @param Container $order
+     * @param Container $froms
+     * @param Container $wheres
+     * @param Container $groups
+     * @param Container $havings
+     * @param Container $orders
      * @param int $limit
      */
-    public function __construct(QueryFactory $queryFactory, Container $fields = null, Container $from = null, Container $where = null, Container $group = null, Container $having = null, Container $order = null, $limit = null)
+    public function __construct(QueryFactory $queryFactory, Container $fields = null, Container $froms = null, Container $wheres = null, Container $groups = null, Container $havings = null, Container $orders = null, $limit = null)
     {
         parent::__construct($queryFactory);
-
         $this->fields = $fields ?: new ArrayContainer();
-        $this->from = $from ?: new ArrayContainer();
-        $this->where = $where ?: new ArrayContainer();
-        $this->group = $group ?: new ArrayContainer();
-        $this->having = $having ?: new ArrayContainer();
-        $this->order = $order ?: new ArrayContainer();
+        $this->froms = $froms ?: new ArrayContainer();
+        $this->wheres = $wheres ?: new ArrayContainer();
+        $this->groups = $groups ?: new ArrayContainer();
+        $this->havings = $havings ?: new ArrayContainer();
+        $this->orders = $orders ?: new ArrayContainer();
         $this->limit = $limit;
     }
 
     /**
      * @param mixed $fields
-     * @return SelectQueryBuilder
+     * @return $this
      */
     public function fields($fields)
     {
@@ -78,63 +77,63 @@ class SelectQueryBuilder extends AbstractQueryBuilder
     }
 
     /**
-     * @param mixed $from
-     * @return SelectQueryBuilder
+     * @param mixed $froms
+     * @return $this
      */
-    public function from($from)
+    public function froms($froms)
     {
-        $from = is_array($from) ? new ArrayContainer($from) : $from;
-        $this->from = $from;
+        $froms = is_array($froms) ? new ArrayContainer($froms) : $froms;
+        $this->froms = $froms;
         return $this;
     }
 
     /**
      * @param mixed $where
-     * @return SelectQueryBuilder
+     * @return $this
      */
-    public function where($where)
+    public function wheres($where)
     {
         $where = is_array($where) ? new ArrayContainer($where) : $where;
-        $this->where = $where;
+        $this->wheres = $where;
         return $this;
     }
 
     /**
-     * @param mixed $group
-     * @return SelectQueryBuilder
+     * @param mixed $groups
+     * @return $this
      */
-    public function group($group)
+    public function groups($groups)
     {
-        $group = is_array($group) ? new ArrayContainer($group) : $group;
-        $this->group = $group;
+        $groups = is_array($groups) ? new ArrayContainer($groups) : $groups;
+        $this->groups = $groups;
         return $this;
     }
 
     /**
-     * @param mixed $having
-     * @return SelectQueryBuilder
+     * @param mixed $havings
+     * @return $this
      */
-    public function having($having)
+    public function havings($havings)
     {
-        $having = is_array($having) ? new ArrayContainer($having) : $having;
-        $this->having = $having;
+        $havings = is_array($havings) ? new ArrayContainer($havings) : $havings;
+        $this->havings = $havings;
         return $this;
     }
 
     /**
-     * @param mixed $order
-     * @return SelectQueryBuilder
+     * @param mixed $orders
+     * @return $this
      */
-    public function order($order)
+    public function orders($orders)
     {
-        $order = is_array($order) ? new ArrayContainer($order) : $order;
-        $this->order = $order;
+        $orders = is_array($orders) ? new ArrayContainer($orders) : $orders;
+        $this->orders = $orders;
         return $this;
     }
 
     /**
-     * @param mixed $limit
-     * @return SelectQueryBuilder
+     * @param int $limit
+     * @return $this
      */
     public function limit($limit)
     {
@@ -149,11 +148,11 @@ class SelectQueryBuilder extends AbstractQueryBuilder
     {
         return $this->queryFactory()->select(
             $this->fields,
-            $this->from,
-            $this->where,
-            $this->group,
-            $this->having,
-            $this->order,
+            $this->froms,
+            $this->wheres,
+            $this->groups,
+            $this->havings,
+            $this->orders,
             $this->limit
         );
     }

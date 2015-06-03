@@ -8,8 +8,12 @@ class SelectStatement implements Statement
     {
         return $q->select(function (SelectQueryBuilder $q) {
             $q->fields([])
-                ->from([])
-                ->where([]);
+                ->froms([])
+                ->wheres([])
+                ->groups([])
+                ->havings([])
+                ->orders([])
+                ->limit(5);
         });
     }
 }

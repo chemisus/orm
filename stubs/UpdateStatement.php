@@ -7,7 +7,11 @@ class UpdateStatement implements Statement
     public function build(StatementBuilder $q)
     {
         return $q->update(function (UpdateQueryBuilder $q) {
-            $q->from([]);
+            $q->table('')
+                ->fields([])
+                ->wheres([])
+                ->values([])
+                ->limit(5);
         });
     }
 }

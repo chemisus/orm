@@ -15,12 +15,12 @@ class DeleteQueryBuilder extends AbstractQueryBuilder
     /**
      * @var Container
      */
-    private $where;
+    private $wheres;
 
     /**
      * @var Container
      */
-    private $order;
+    private $orders;
 
     /**
      * @var int
@@ -39,8 +39,8 @@ class DeleteQueryBuilder extends AbstractQueryBuilder
     {
         parent::__construct($queryFactory);
         $this->table = $table;
-        $this->where = $where ?: new ArrayContainer();
-        $this->order = $order ?: new ArrayContainer();
+        $this->wheres = $where ?: new ArrayContainer();
+        $this->orders = $order ?: new ArrayContainer();
         $this->limit = $limit;
     }
 
@@ -55,22 +55,34 @@ class DeleteQueryBuilder extends AbstractQueryBuilder
     }
 
     /**
-     * @param mixed $order
+     * @param mixed $orders
      * @return $this
      */
-    public function order($order)
+    public function orders($orders)
     {
-        $this->order = $order ?: new ArrayContainer();
+        $orders = is_array($orders) ? new ArrayContainer($orders) : $orders;
+        $this->orders = $orders ?: new ArrayContainer();
         return $this;
     }
 
     /**
-     * @param mixed $where
+     * @param mixed $wheres
      * @return $this
      */
-    public function where($where)
+    public function wheres($wheres)
     {
-        $this->where = $where ?: new ArrayContainer();
+        $wheres = is_array($wheres) ? new ArrayContainer($wheres) : $wheres;
+        $this->wheres = $wheres ?: new ArrayContainer();
+        return $this;
+    }
+
+    /**
+     * @param int $limit
+     * @return $this
+     */
+    public function limit($limit)
+    {
+        $this->limit = $limit;
         return $this;
     }
 
@@ -79,6 +91,6 @@ class DeleteQueryBuilder extends AbstractQueryBuilder
      */
     public function build()
     {
-        return $this->queryFactory()->delete($this->table, $this->where, $this->order, $this->limit);
+        return $this->queryFactory()->delete($this->table, $this->wheres, $this->orders, $this->limit);
     }
 }

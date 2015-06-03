@@ -11,7 +11,9 @@ class InsertStatement implements Statement
     public function build(StatementBuilder $q)
     {
         return $q->insert(function (InsertQueryBuilder $q) {
-            $q->table([]);
+            $q->table([])
+                ->fields([])
+                ->values([]);
         });
     }
 }
