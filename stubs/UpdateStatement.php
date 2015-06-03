@@ -9,7 +9,7 @@ class UpdateStatement implements Statement
     public function build(StatementBuilder $q)
     {
         return $q->update(function (UpdateQueryBuilder $q) {
-            $q->table('')
+            $q->table('test_table')
                 ->fields([])
                 ->wheres([])
                 ->values([])

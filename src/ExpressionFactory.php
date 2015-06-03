@@ -47,10 +47,10 @@ interface ExpressionFactory
     public function delete($table, Container $where, Container $order, $limit);
 
     /**
-     * @param string $name
+     * @param string $field
      * @return mixed
      */
-    public function field($name);
+    public function identifier($field);
 
     public function createDatabase();
 

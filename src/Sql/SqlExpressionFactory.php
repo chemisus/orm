@@ -74,4 +74,13 @@ class SqlExpressionFactory implements ExpressionFactory
     {
         // TODO: Implement createTable() method.
     }
+
+    /**
+     * @param string $field
+     * @return mixed
+     */
+    public function identifier($field)
+    {
+        return new SqlIdentifier($field);
+    }
 }

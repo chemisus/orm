@@ -9,8 +9,8 @@ class SelectStatement implements Statement
     public function build(StatementBuilder $q)
     {
         return $q->select(function (SelectQueryBuilder $q) {
-            $q->fields([])
-                ->froms([])
+            $q->fields('test_field_1', 'test_field_2')
+                ->froms('test_table')
                 ->wheres([])
                 ->groups([])
                 ->havings([])

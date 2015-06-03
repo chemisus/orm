@@ -1,8 +1,8 @@
 <?php
 
-namespace Chemisus\Database\Jql;
+namespace Chemisus\Database\Query;
 
-class JqlField
+class AbstractIdentifier
 {
     /**
      * @var string
@@ -15,5 +15,10 @@ class JqlField
     public function __construct($field)
     {
         $this->field = $field;
+    }
+
+    public function field()
+    {
+        return $this->field;
     }
 }

@@ -17,9 +17,9 @@ class SqlSelectQuery extends AbstractSelectQuery implements SqlQuery
             return "select *";
         }
 
-        return "select " . $this->fields()->map(function ($field) {
-            return $field;
-        });
+        return "select " . implode(', ', $this->fields()->map(function ($field) {
+            return $field->toSql();
+        })->values());
     }
 
     public function makeFrom()
@@ -28,7 +28,7 @@ class SqlSelectQuery extends AbstractSelectQuery implements SqlQuery
             return "";
         }
 
-        return "from " . implode(', ', $this->from()->each('toSql')->values());
+        return " from " . implode(', ', $this->from()->each('toSql')->values());
     }
 
     public function makeWhere()
@@ -37,6 +37,6 @@ class SqlSelectQuery extends AbstractSelectQuery implements SqlQuery
             return "";
         }
 
-        return "where " . implode(' && ', $this->where()->each('toSql')->values());
+        return " where " . implode(' && ', $this->where()->each('toSql')->values());
     }
 }
