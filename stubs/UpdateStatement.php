@@ -11,6 +11,7 @@ class UpdateStatement implements Statement
                 ->fields([])
                 ->wheres([])
                 ->values([])
+                ->orders([])
                 ->limit(5);
         });
     }
